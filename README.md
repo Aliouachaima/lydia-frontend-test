@@ -90,48 +90,9 @@ Then open : http://localhost:5173
 npm run test
 
 ## E2E tests :
-npx playwright install
-npm run test:e2e
+- npx playwright install
+- npm run test:e2e
 
-# Project Structure
-
-src/
-  app/
-    providers/
-      AppProviders.tsx
-
-  features/
-    transactions/
-      components/
-        TransactionCard
-        TransactionDetailsModal
-        SearchBar
-        SortSelect
-
-      hooks/
-        useTransactions
-
-      utils/
-        filterTransactions
-        sort
-        format
-
-      TransactionsPage.tsx
-      types.ts
-
-  test/
-    render.tsx
-
-
-# General Logic
-
-- Data is fetched using TanStack Query.
-
-- Search and sorting are computed with useMemo.
-
-- Components are separated between UI and logic.
-
-- data-testid attributes are used to stabilize tests.
 
 # Screenshots
 
