@@ -1,73 +1,145 @@
-# React + TypeScript + Vite
+# Lydia Transactions – Frontend Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React application used to display, search, filter and sort a list of transactions.
 
-Currently, two official plugins are available:
+This project was built using good engineering practices (TypeScript, separation of concerns, testing, feature-based architecture).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+# Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Features :
 
-## Expanding the ESLint configuration
+- Features
+- Search by label (case-insensitive)
+- Sort by date (asc / desc)
+- Transaction details modal
+- Loading / error / empty states
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Technologies Used
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Frontend :
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- React 19.2.4
+- TypeScript 5.9.3
+- Vite 7.3.1
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+UI :
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Chakra UI v3
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Data fetching :
+
+- TanStack Query v5
+
+Testing :
+
+- Vitest 4.0.18
+- Testing Library
+- Playwright (E2E)
+
+---
+
+# Prerequisites
+
+- Node.js >= 20.19
+- npm >= 10
+
+Check versions :
+
+- node -v
+- npm -v
+
+--- 
+
+# Project Installation
+
+## 1. Clone the repository : 
+
+git clone https://github.com/Aliouachaima/lydia-frontend-test.git 
+
+## 2. Go into the project folder : 
+
+cd lydia-frontend-test
+
+## 3. Install dependencies :
+
+npm install
+
+# Environment Variables
+
+## Create a file : 
+.env
+
+## Add : 
+
+VITE_TRANSACTIONS_URL="JSON_URL"
+
+The JSON URL is : "https://file.notion.so/f/f/7c9d0d81-e08e-4a47-ad18-8806dd0d43a6/2b491f87-68e5-48ab-b893-6769f25556d2/transactions.json?table=block&id=22e9a59d-afa5-4b0c-ad9d-770601425149&spaceId=7c9d0d81-e08e-4a47-ad18-8806dd0d43a6&expirationTimestamp=1770597615395&signature=Zh0blUSNMDx2ESob2XUgarlvXQiC7WFI2lsEhl2n8SQ&downloadName=transactions.json"
+
+# Run the Application
+
+npm run dev 
+Then open : http://localhost:5173
+
+# Running Tests
+
+## Unit tests :
+npm run test
+
+## E2E tests :
+npx playwright install
+npm run test:e2e
+
+# Project Structure
+
+src/
+  app/
+    providers/
+      AppProviders.tsx
+
+  features/
+    transactions/
+      components/
+        TransactionCard
+        TransactionDetailsModal
+        SearchBar
+        SortSelect
+
+      hooks/
+        useTransactions
+
+      utils/
+        filterTransactions
+        sort
+        format
+
+      TransactionsPage.tsx
+      types.ts
+
+  test/
+    render.tsx
+
+
+# General Logic
+
+- Data is fetched using TanStack Query.
+
+- Search and sorting are computed with useMemo.
+
+- Components are separated between UI and logic.
+
+- data-testid attributes are used to stabilize tests.
+
+# Screenshots
+
+## Transactions list
+![Transactions list](docs/transactions.png)
+
+## Search transaction
+![Search transaction](docs/search.png)
+
+### Transaction details
+![Transaction details](docs/transaction_details.png)
