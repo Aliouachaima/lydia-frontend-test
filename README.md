@@ -2,7 +2,10 @@
 
 React application used to display, search, filter and sort a list of transactions.
 
+
 This project was built using good engineering practices (TypeScript, separation of concerns, testing, feature-based architecture).
+## Live Demo
+- https://lydia-frontend-test.vercel.app/
 
 ---
 
